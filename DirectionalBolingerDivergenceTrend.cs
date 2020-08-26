@@ -36,33 +36,33 @@ namespace NinjaTrader.NinjaScript.Strategies
 		{
 			if (State == State.SetDefaults)
 			{
-				Description									= @"Enter the description for your new custom Strategy here.";
-				Name										= "DirectionalBolingerDivergenceTrendV2Code";
-				Calculate									= Calculate.OnBarClose;
-				EntriesPerDirection							= 1;
-				EntryHandling								= EntryHandling.AllEntries;
-				IsExitOnSessionCloseStrategy				= true;
-				ExitOnSessionCloseSeconds					= 30;
-				IsFillLimitOnTouch							= false;
-				MaximumBarsLookBack							= MaximumBarsLookBack.TwoHundredFiftySix;
-				OrderFillResolution							= OrderFillResolution.Standard;
-				Slippage									= 0;
-				StartBehavior								= StartBehavior.WaitUntilFlat;
-				TimeInForce									= TimeInForce.Gtc;
-				TraceOrders									= true;
-				RealtimeErrorHandling						= RealtimeErrorHandling.StopCancelClose;
-				StopTargetHandling							= StopTargetHandling.PerEntryExecution;
-				BarsRequiredToTrade							= 20;
+				Description					= @"Enter the description for your new custom Strategy here.";
+				Name						= "DirectionalBolingerDivergenceTrendV2Code";
+				Calculate					= Calculate.OnBarClose;
+				EntriesPerDirection				= 1;
+				EntryHandling					= EntryHandling.AllEntries;
+				IsExitOnSessionCloseStrategy			= true;
+				ExitOnSessionCloseSeconds			= 30;
+				IsFillLimitOnTouch				= false;
+				MaximumBarsLookBack				= MaximumBarsLookBack.TwoHundredFiftySix;
+				OrderFillResolution				= OrderFillResolution.Standard;
+				Slippage					= 0;
+				StartBehavior					= StartBehavior.WaitUntilFlat;
+				TimeInForce					= TimeInForce.Gtc;
+				TraceOrders					= true;
+				RealtimeErrorHandling				= RealtimeErrorHandling.StopCancelClose;
+				StopTargetHandling				= StopTargetHandling.PerEntryExecution;
+				BarsRequiredToTrade				= 20;
 				// Disable this property for performance gains in Strategy Analyzer optimizations
 				IsInstantiatedOnEachOptimizationIteration	= true;
 				StopLoss					= 8;
 				TakeProfit					= 4;
 				MAPeriod					= 200;
-				BollingerStdDev				= 2;
-				BollingerPeriod				= 14;
+				BollingerStdDev					= 2;
+				BollingerPeriod					= 14;
 				TrendTrade					= @"TrendTrade";
-				CounterTrendTrade			= @"CounterTrendTrade";
-				StochRSIPeriod				= 14;
+				CounterTrendTrade				= @"CounterTrendTrade";
+				StochRSIPeriod					= 14;
 				StochRSIMax					= 1;
 				StochRSIMin					= 0;
 			}
@@ -71,17 +71,17 @@ namespace NinjaTrader.NinjaScript.Strategies
 			}
 			else if (State == State.DataLoaded)
 			{				
-				EMA1				= EMA(Close, Convert.ToInt32(MAPeriod));
-				EMA2				= EMA(Close, Convert.ToInt32(5));
+				EMA1					= EMA(Close, Convert.ToInt32(MAPeriod));
+				EMA2					= EMA(Close, Convert.ToInt32(5));
 				Bollinger1				= Bollinger(Close, BollingerStdDev, Convert.ToInt32(BollingerPeriod));
 				Bollinger2				= Bollinger(Close, BollingerStdDev, Convert.ToInt32(BollingerPeriod));
 				StochRSI1				= StochRSI(Close, 14);
-				EMA1.Plots[0].Brush = Brushes.Goldenrod;
-				EMA2.Plots[0].Brush = Brushes.Goldenrod;
-				Bollinger1.Plots[0].Brush = Brushes.Lime;
-				Bollinger1.Plots[1].Brush = Brushes.Blue;
-				Bollinger1.Plots[2].Brush = Brushes.Red;
-				StochRSI1.Plots[0].Brush = Brushes.DarkCyan;
+				EMA1.Plots[0].Brush 			= Brushes.Goldenrod;
+				EMA2.Plots[0].Brush 			= Brushes.Goldenrod;
+				Bollinger1.Plots[0].Brush 		= Brushes.Lime;
+				Bollinger1.Plots[1].Brush 		= Brushes.Blue;
+				Bollinger1.Plots[2].Brush 		= Brushes.Red;
+				StochRSI1.Plots[0].Brush 		= Brushes.DarkCyan;
 				AddChartIndicator(EMA1);
 				AddChartIndicator(EMA2);
 				AddChartIndicator(Bollinger1);
